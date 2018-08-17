@@ -10,9 +10,9 @@ public static class SaveLoad
     public static List<Save> savedGames = new List<Save>();
 
     //it's static so we can call it from anywhere
-    public static void save()
+    public static void save(Save item)
     {
-        SaveLoad.savedGames.Add(Save.current);
+        savedGames.Add(item);
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd"); //you can call it anything you want
@@ -26,7 +26,7 @@ public static class SaveLoad
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            SaveLoad.savedGames = (List<Save>)bf.Deserialize(file);
+            savedGames = (List<Save>)bf.Deserialize(file);
             file.Close();
         }
     }

@@ -293,6 +293,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Entradas.cs" />
     <Compile Include="Assets\Scripts\Menus.cs" />
+    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Save.cs" />
     <Compile Include="Assets\Scripts\SaveLoad.cs" />
   </ItemGroup>

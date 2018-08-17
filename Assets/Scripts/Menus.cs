@@ -6,36 +6,35 @@ using UnityEngine.SceneManagement;
 public class Menus : MonoBehaviour {
 
     public GameObject Item_prefab;
-    public List<Save> lista = SaveLoad.savedGames;
+    public List<Save> lista = null;
+    void Update()
+    {
+        lista = SaveLoad.savedGames;
+    }
+
     public void novo_item()
     {
         SceneManager.LoadScene("Criar");
-        lista = SaveLoad.savedGames;
     }
 
     public void menu_items()
     {
         SceneManager.LoadScene("Items");
-        SaveLoad.load();
-
-        SaveLoad.savedGames.ForEach(show_item);
+        //SaveLoad.load();
     }
 
-    public void guardar_item()
+
+    public void show_items()
     {
-        Save.current = new Save();
-
-        Save.current.desc = Entradas.descp;
-        Save.current.dur = Entradas.dur;
-        Save.current.mont = Entradas.value;
-        Save.current.Vinicial = Entradas.VALORINICIAL;
-        SaveLoad.save();
-
-        SceneManager.LoadScene("Items");
+        SaveLoad.load();
+        foreach (Save g in SaveLoad.savedGames)
+        {
+            Instantiate(Item_prefab);
+        }
     }
 
     public void show_item(Save _item)
     {
-        Instantiate(Item_prefab);      
+     
     }
 }
