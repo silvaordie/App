@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class Menus : MonoBehaviour {
 
     public GameObject Item_prefab;
+    public GameObject canvas;
+
     public List<Save> lista = null;
     void Update()
     {
@@ -29,12 +31,8 @@ public class Menus : MonoBehaviour {
         SaveLoad.load();
         foreach (Save g in SaveLoad.savedGames)
         {
-            Instantiate(Item_prefab);
+            GameObject item=Instantiate(Item_prefab);
+            item.transform.SetParent(canvas.transform, false);
         }
-    }
-
-    public void show_item(Save _item)
-    {
-     
     }
 }
