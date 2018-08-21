@@ -22,6 +22,10 @@ public class Entradas : MonoBehaviour {
     {
         VINICIAL.text = "";
         VFINAL.text = "";
+        descp = "";
+        value = 0;
+        dur = 0;
+        VALORINICIAL = 0;
     }
 
 
@@ -38,20 +42,6 @@ public class Entradas : MonoBehaviour {
 
         VINICIAL.text = VALORINICIAL.ToString("0.0") + "€";
         VFINAL.text = VALORFINAL.ToString("0.0") + "€";
-    }
-
-    public void guardar_item()
-    {
-        Save item = new Save();
-
-        item.desc = descp;
-        item.dur = dur;
-        item.mont = value;
-        item.Vinicial = VALORINICIAL;
-
-        SaveLoad.save(item);
-
-        SceneManager.LoadScene("Items");
     }
 
 }

@@ -12,7 +12,9 @@ public static class SaveLoad
     //it's static so we can call it from anywhere
     public static void save(Save item)
     {
-        savedGames.Add(item);
+        if(item!=null)
+            savedGames.Add(item);
+
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
         FileStream file = File.Create(Application.persistentDataPath + "/savedGames.gd"); //you can call it anything you want

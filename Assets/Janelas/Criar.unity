@@ -778,14 +778,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 851350007}
-        m_MethodName: menu_items
-        m_Mode: 1
+        m_MethodName: load_scene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Items
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -966,7 +966,6 @@ GameObject:
   m_Component:
   - component: {fileID: 851350008}
   - component: {fileID: 851350007}
-  - component: {fileID: 851350009}
   m_Layer: 0
   m_Name: Menus
   m_TagString: Untagged
@@ -985,7 +984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1cc2da6aca41374684ef98fe73c26a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item_prefab: {fileID: 0}
+  Item_prefab: {fileID: 1678707918313294, guid: 3310b4399421856499a283c8aa795ee7,
+    type: 2}
+  canvas: {fileID: 2078439033}
   lista: []
 --- !u!4 &851350008
 Transform:
@@ -1000,22 +1001,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &851350009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 851350006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfdc0dd64f0b45b4ca0d2106a7f487ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  descricao: {fileID: 0}
-  montante: {fileID: 0}
-  duracao: {fileID: 0}
-  VINICIAL: {fileID: 0}
-  VFINAL: {fileID: 0}
 --- !u!1 &857162507
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,7 +1199,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 851350009}
+      - m_Target: {fileID: 851350007}
         m_MethodName: guardar_item
         m_Mode: 1
         m_Arguments:

@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Janelas/Criar.unity
     guid: e6f3549cab26643418faa08e9329ce0e
+  - enabled: 1
+    path: Assets/Janelas/Semanas.unity
+    guid: d4a0fb1aaa9f4a548a330bbe364e9260
