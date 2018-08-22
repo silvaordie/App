@@ -25,9 +25,7 @@ public class Menus : MonoBehaviour {
             GameObject b = a.gameObject;
             Text c=b.GetComponentInChildren<Text>(false);
 
-            Save[] lista = new Save[SaveLoad.savedGames.Count];
-            SaveLoad.savedGames.CopyTo(lista);
-            Save temp = lista[index];
+            Save temp = SaveLoad.savedGames[index];
 
             c.text = temp.desc;
         }
@@ -45,25 +43,27 @@ public class Menus : MonoBehaviour {
         SaveLoad.load();
         Text[] ele;
         string pal;
-        int i = 0;
 
-        foreach (Save g in SaveLoad.savedGames)
+        for(int i=0; i<20; i=i+1)
         {
-            GameObject item=Instantiate(Item_prefab);
-            item.transform.SetParent(canvas.transform, false);
-            item.transform.Translate(0, (float)(-i * (1.27)), 0);
-            i=i+1;
+            if(SaveLoad.savedGames[i]!= null)
+            {
+                GameObject item = Instantiate(Item_prefab);
+                item.transform.SetParent(canvas.transform, false);
+                item.transform.Translate(0, (float)(-i * (1.27)), 0);
 
-            ele = item.GetComponentsInChildren<Text>(false);
+                ele = item.GetComponentsInChildren<Text>(false);
 
-            ele[0].text = g.desc;
-            ele[1].text = (i).ToString();
-            ele[2].text = g.mont.ToString() + "€";
-            if (g.dur == 1)
-                pal = " semana";
-            else
-                pal = " semanas";
-            ele[3].text = g.dur.ToString() + pal;
+                ele[0].text = SaveLoad.savedGames[i].desc;
+                ele[1].text = (i + 1).ToString();
+                ele[2].text = SaveLoad.savedGames[i].mont.ToString() + "€";
+                if (SaveLoad.savedGames[i].dur == 1)
+                    pal = " semana";
+                else
+                    pal = " semanas";
+                ele[3].text = SaveLoad.savedGames[i].dur.ToString() + pal;
+            }
+
         }
     }
 
@@ -92,9 +92,7 @@ public class Menus : MonoBehaviour {
         int i= int.Parse(ele[1].text)-1;
 
         Destroy(item);
-
-        SaveLoad.savedGames.RemoveAt(i);
-        SaveLoad.save(null);
+        SaveLoad.remove(i);
     }
 
     public void open_item(GameObject item)
@@ -107,10 +105,8 @@ public class Menus : MonoBehaviour {
 
     public void load_payments()
     {
-        Save[] lista = new Save[SaveLoad.savedGames.Count];
-        SaveLoad.savedGames.CopyTo(lista);
         Transform panel = canvas.transform.Find("Panel");
-        Save temp=lista[index];
+        Save temp = SaveLoad.savedGames[index];
 
         float valor = temp.Vinicial;
         for( int i=0; i< temp.dur; i++ )
@@ -129,9 +125,7 @@ public class Menus : MonoBehaviour {
 
     public void scrollbar()
     {
-        Save[] lista = new Save[SaveLoad.savedGames.Count];
-        SaveLoad.savedGames.CopyTo(lista);
-        Save temp = lista[index];
+        Save temp = SaveLoad.savedGames[index];
 
         Transform panel = canvas.transform.Find("Panel");
         Scrollbar scroll = canvas.GetComponentInChildren<Scrollbar>(false);

@@ -7,13 +7,17 @@ using System.IO;
 public static class SaveLoad
 {
 
-    public static List<Save> savedGames = new List<Save>();
+    public static Save[] savedGames = new Save[20];
+    public static int position = 0;
 
     //it's static so we can call it from anywhere
     public static void save(Save item)
     {
         if(item!=null)
-            savedGames.Add(item);
+        {
+            savedGames[position] = item;
+            position = position + 1;
+        }
 
         BinaryFormatter bf = new BinaryFormatter();
         //Application.persistentDataPath is a string, so if you wanted you can put that into debug.log if you want to know where save games are located
@@ -28,8 +32,22 @@ public static class SaveLoad
         {
             BinaryFormatter bf = new BinaryFormatter();
             FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-            savedGames = (List<Save>)bf.Deserialize(file);
+            savedGames = (Save[])bf.Deserialize(file);
             file.Close();
         }
     }
+
+    public static void remove(int inx)
+    {
+        for (int id = inx; id < 20; id = id + 1)
+        {
+            if (id != 19)
+                SaveLoad.savedGames[id] = SaveLoad.savedGames[id + 1];
+            else
+                SaveLoad.savedGames[id] = null;
+        }
+
+        SaveLoad.save(null);
+    }
+
 }
